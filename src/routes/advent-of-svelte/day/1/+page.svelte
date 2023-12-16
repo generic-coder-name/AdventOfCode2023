@@ -27,6 +27,7 @@
 <p class="mt-3">Todos</p>
 <ul class="list">
   <li>Search Bar</li>
+  <li>Naughty and Nice Filtering</li>
 </ul>
 
 <!-- Start Day 1 -->
