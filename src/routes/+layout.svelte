@@ -18,13 +18,18 @@
       <li>
         <a
           href="/advent-of-svelte"
-          class:active={isLinkActive("/advent-of-svelte")}>Advent of Svelte</a
+          class:active={isLinkActive("/advent-of-svelte")}
         >
+          Advent of Svelte
+        </a>
       </li>
       <li>
-        <a href="/advent-of-code" class:active={isLinkActive("/advent-of-code")}
-          >Advent of Code</a
+        <a
+          href="/advent-of-code"
+          class:active={isLinkActive("/advent-of-code")}
         >
+          Advent of Code
+        </a>
       </li>
     </ul>
   </nav>
@@ -83,6 +88,9 @@
   }
 
   main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 76px);
     padding: 1rem 2rem;
   }
 </style>

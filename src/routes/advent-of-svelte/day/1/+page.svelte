@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import KidCard from "$lib/day1/KidCard.svelte";
+  import { data, getData } from "$lib/day1/data";
 
-  let data: { name: string; tally: number }[];
   onMount(async () => {
-    data = await (await fetch("/data/day1.json")).json();
+    await getData();
   });
 </script>
 
@@ -25,12 +26,12 @@
 </p>
 
 <!-- Start Day 1 -->
-<div class="row">
+<div class="row gap-3 mt-6">
   <div class="card full">
     <h2 class="centered red">Naughty</h2>
     <p class="statistic centered">
-      {#if data}
-        {data.filter(({ tally }) => tally < 0).length}
+      {#if $data}
+        {$data.filter(({ tally }) => tally < 0).length}
       {:else}
         0
       {/if}
@@ -39,8 +40,8 @@
   <div class="card full">
     <h2 class="centered green">Nice</h2>
     <p class="statistic centered">
-      {#if data}
-        {data.filter(({ tally }) => tally >= 0).length}
+      {#if $data}
+        {$data.filter(({ tally }) => tally >= 0).length}
       {:else}
         0
       {/if}
@@ -48,15 +49,16 @@
   </div>
 </div>
 
-{#if data}
-  {#each data as { name, tally }}
-    <div class="card row" class:red={tally < 0} class:green={tally >= 0}>
-      <div>
-        <h3>{name}</h3>
-        <p>Score: {tally}</p>
-      </div>
-      <button>Was Naughty</button>
-      <button>Was Nice!</button>
-    </div>
-  {/each}
-{/if}
+<div class="kids">
+  {#if $data}
+    {#each $data as { name, tally }}
+      <KidCard {name} {tally} />
+    {/each}
+  {/if}
+</div>
+
+<style>
+  .kids {
+    overflow: auto;
+  }
+</style>

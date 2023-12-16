@@ -1,0 +1,5 @@
+
+$threshold: 55%;
+@function color-contrast($color, $light, $dark) {
+  @return if(lightness($color) < $threshold, $light, $dark)
+}

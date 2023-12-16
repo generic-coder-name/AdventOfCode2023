@@ -5,14 +5,19 @@ $justify-rules: "start" start, "center" center, "end" end;
 
 .row {
   display: flex;
-  @each $align-name, $align-value in $align-rules {
+  @each $align-name, $align-rules in $align-rules {
     &.align-#{$align-name} {
-      align-items: $align-value;
+      align-items: $align-rules;
     }
   }
-  @each $justify-name, $justify-value in $justify-rules {
+  @each $justify-name, $justify-rule in $justify-rules {
     &.justify-#{$justify-name} {
-      justify-content: $justify-value;
+      justify-content: $justify-rule;
+    }
+  }
+  @each $size-name, $size in $sizes {
+    &.gap-#{$size-name} {
+      gap: $size;
     }
   }
 

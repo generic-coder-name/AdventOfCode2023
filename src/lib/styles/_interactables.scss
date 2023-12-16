@@ -1,0 +1,64 @@
+@use "./variables" as *;
+@use "./functions" as *;
+
+@mixin button-color($color) {
+  background-color: $color;
+  border-color: $color;
+  color: color-contrast($color, $white, $dark);
+
+  &:not(:disabled):hover {
+    background-color: darken($color, 0.4);
+    color: color-contrast(darken($color, 0.4), $white, $dark);
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: $color;
+
+    &:not(:disabled):hover {
+      background-color: $color;
+      color: color-contrast($color, $white, $dark);
+    }
+  }
+}
+
+@mixin button-size($font-size, $block-padding, $inline-padding) {
+  font-size: $font-size;
+  padding: $block-padding $inline-padding;
+}
+
+button {
+  display: block;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):active {
+    scale: 0.98;
+  }
+
+  border: 2px solid $red;
+  @include button-color($red);
+
+  @each $color-name, $color in $colors {
+    &.#{$color-name} {
+      @include button-color($color);
+    }
+  }
+
+  @include button-size(0.95rem, 0.5rem, 1rem); // Medium Sized
+  $sizes: "sm" 0.85rem 0.25rem 0.5rem, "lg" 1.25rem 0.75rem 1.5rem;
+  @each $size-name, $font-size, $block-padding, $inline-padding in $sizes {
+    &.#{$size-name} {
+      @include button-size($font-size, $block-padding, $inline-padding);
+    }
+  }
+}

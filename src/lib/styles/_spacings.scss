@@ -1,0 +1,32 @@
+@use "./variables" as *;
+@use "sass:list" as *;
+
+$spacings: append($sizes, "auto" auto);
+
+@each $size-name, $size in $spacings {
+  .p-#{$size-name}, .px-#{$size-name}, .pl-#{$size-name} {
+    padding-left: $size !important;
+  }
+  .p-#{$size-name}, .px-#{$size-name}, .pr-#{$size-name} {
+    padding-right: $size !important;
+  }
+  .p-#{$size-name}, .py-#{$size-name}, .pt-#{$size-name} {
+    padding-top: $size !important;
+  }
+  .p-#{$size-name}, .py-#{$size-name}, .pb-#{$size-name} {
+    padding-bottom: $size !important;
+  }
+
+  .m-#{$size-name}, .mx-#{$size-name}, .ml-#{$size-name} {
+    margin-left: $size !important;
+  }
+  .m-#{$size-name}, .mx-#{$size-name}, .mr-#{$size-name} {
+    margin-right: $size !important;
+  }
+  .m-#{$size-name}, .my-#{$size-name}, .mt-#{$size-name} {
+    margin-top: $size !important;
+  }
+  .m-#{$size-name}, .my-#{$size-name}, .mb-#{$size-name} {
+    margin-bottom: $size !important;
+  }
+}
