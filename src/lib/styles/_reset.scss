@@ -149,6 +149,12 @@ ul {
   list-style: none;
 }
 
+ol.list, ul.list {
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
 blockquote,
 q {
   quotes: none;
