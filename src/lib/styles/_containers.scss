@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+$align-rules: "start" start, "center" center, "end" end;
+$justify-rules: "start" start, "center" center, "end" end;
+
+.row {
+  display: flex;
+  @each $align-name, $align-value in $align-rules {
+    &.align-#{$align-name} {
+      align-items: $align-value;
+    }
+  }
+  @each $justify-name, $justify-value in $justify-rules {
+    &.justify-#{$justify-name} {
+      justify-content: $justify-value;
+    }
+  }
+
+  & > .full {
+    flex: 1;
+  }
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  border-color: $light-gray;
+  background-color: $white;
+}

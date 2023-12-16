@@ -1,0 +1,60 @@
+@use "./variables" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+small,
+b,
+i,
+label,
+em,
+strong,
+sub,
+sup,
+ins,
+del,
+mark {
+  // Util Styling
+  &.centered {
+    text-align: center;
+  }
+
+  @each $color-name, $color in $colors {
+    &.#{$color-name} {
+      color: $color;
+    }
+  }
+}
+
+$heading-styles: h1 28px, h2 24px, h3 20px, h4 16px, h5 14px, h6 10px;
+
+@each $heading, $font-size in $heading-styles {
+  #{$heading} {
+    font-family: "Source Sans Pro", Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6;
+    font-size: $font-size;
+  }
+}
+
+.statistic {
+  font-size: 32px;
+}
+
+p {
+  font-family: Nunito, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: $green;
+  font-weight: bolder;
+
+  &:hover {
+    color: #13cc4e;
+  }
+}
